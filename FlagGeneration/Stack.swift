@@ -19,17 +19,19 @@ class Stack: Identifiable, Equatable {
     var type: StackType
     var isCurrent: Bool
     var parent: Stack?
+    var symbolName: String?
     
     enum StackType {
         case VStack, HStack
     }
     
-    init(id: UUID = UUID(), chds: [Stack] = [Stack](), color: Color? = nil, type: StackType, isCurrent: Bool, parent: Stack? = nil) {
+    init(id: UUID = UUID(), chds: [Stack] = [Stack](), color: Color? = nil, type: StackType, isCurrent: Bool, parent: Stack? = nil, symbolName: String? = nil) {
         self.id = id
         self.chds = chds
         self.color = color
         self.type = type
         self.isCurrent = isCurrent
         self.parent = parent
+        self.symbolName = symbolName
     }
 }

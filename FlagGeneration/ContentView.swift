@@ -6,15 +6,14 @@
 //
 
 import SwiftUI
+import SFSymbolsPicker
 
 struct ContentView: View {
-    @State private var rootStack: Stack?
-    @State private var color = Color.blue
-    @State private var currentStack = Stack(type: .VStack, isCurrent: false)
-    @State private var renderedImage = Image(systemName: "photo")
+    @State private var viewModel = ContentViewModel()
+    @State private var isPresented = false
     
     var body: some View {
-        if let rootStack = rootStack {
+        if let rootStack = viewModel.rootStack {
             StackView(stack: rootStack)
                 .frame(width: 350, height: 200)
         } else {
@@ -24,70 +23,75 @@ struct ContentView: View {
         
         HStack {
             Button("Add HStack") {
-                if rootStack == nil {
-                    rootStack = Stack(type: .HStack, isCurrent: true)
-                    if let root = rootStack {
-                        currentStack = root
-                    }
-                } else {
-                    let newStack = Stack(type: .HStack, isCurrent: true, parent: currentStack)
-                    currentStack.chds.append(newStack)
-                    currentStack.isCurrent = false
-                    currentStack = newStack
-                }
+                viewModel.addStack(type: .HStack)
             }
             .buttonStyle(.borderedProminent)
             
             Button("Add VStack") {
-                if rootStack == nil {
-                    rootStack = Stack(type: .VStack, isCurrent: true)
-                    if let root = rootStack {
-                        currentStack = root
-                    }
-                } else {
-                    let newStack = Stack(type: .VStack, isCurrent: true, parent: currentStack)
-                    currentStack.chds.append(newStack)
-                    currentStack.isCurrent = false
-                    currentStack = newStack
-                }
+                viewModel.addStack(type: .VStack)
             }
             .buttonStyle(.borderedProminent)
             
-            
-            Button("Add Color") {
-                currentStack.chds.append(Stack(color: color, type: .HStack, isCurrent: false))
+            Button("Add Stripe") {
+                viewModel.addStripe()
             }
             .buttonStyle(.borderedProminent)
-            .disabled(rootStack == nil)
+            .disabled(viewModel.rootStack == nil)
         }
         
-        Button("Back to previous container") {
-            if let parent = currentStack.parent {
-                currentStack.isCurrent = false
-                currentStack = parent
-                currentStack.isCurrent = true
+        HStack {
+            Button("Back to previous container") {
+                viewModel.backToPreviousConainer()
             }
-        }
-        .padding()
-        .buttonStyle(.borderedProminent)
-        .disabled(currentStack.parent == nil)
-        
-        ColorPicker("Select color", selection: $color)
             .padding()
-            .background(.blue.opacity(0.4))
-            .frame(width: 200)
-            .clipShape(.capsule)
+            .buttonStyle(.borderedProminent)
+            .disabled(viewModel.currentStack.parent == nil)
+            
+            ColorPicker("Select color", selection: $viewModel.color)
+                .padding()
+                .background(.blue.opacity(0.4))
+                .frame(width: 180)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+        }
+        
+        HStack {
+            Button {
+                isPresented.toggle()
+            } label: {
+                Text("Select a symbol")
+                Image(systemName: viewModel.icon).font(.title3)
+                    .sheet(isPresented: $isPresented, content: {
+                        SymbolsPicker(selection: $viewModel.icon, title: "Pick a symbol", autoDismiss: true)
+                    })
+            }
+            .padding()
+            .foregroundStyle(.black)
+        }
+        .background(.blue.opacity(0.4))
+        .clipShape(RoundedRectangle(cornerRadius: 10))
         
         Spacer()
-       
-        Button("Restart") {
-            rootStack = nil
-            currentStack = Stack(type: .VStack, isCurrent: false)
+        
+        Image(uiImage: viewModel.renderedImage)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 150)
+        
+        HStack {
+            Button("Restart") {
+                viewModel.restart()
+            }
+            .buttonStyle(.borderedProminent)
+            
+            Spacer()
+            
+            Button("Save Flag") {
+                viewModel.saveFlag()
+            }
+            .buttonStyle(.borderedProminent)
         }
-        .buttonStyle(.borderedProminent)
+        .padding()
     }
-    
-    
 }
 
 #Preview {

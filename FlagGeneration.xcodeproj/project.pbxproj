@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C6349572BD2656500CC34CF /* ContentVIew-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6349562BD2656500CC34CF /* ContentVIew-ViewModel.swift */; };
 		9C6901F92BCEEED0000B2C8F /* FlagGenerationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6901F82BCEEED0000B2C8F /* FlagGenerationApp.swift */; };
 		9C6901FB2BCEEED0000B2C8F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6901FA2BCEEED0000B2C8F /* ContentView.swift */; };
 		9C6901FD2BCEEED1000B2C8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6901FC2BCEEED1000B2C8F /* Assets.xcassets */; };
 		9C6902002BCEEED1000B2C8F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6901FF2BCEEED1000B2C8F /* Preview Assets.xcassets */; };
 		9C6902072BCEEF04000B2C8F /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6902062BCEEF04000B2C8F /* StackView.swift */; };
 		9C6902092BCEEF0A000B2C8F /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6902082BCEEF0A000B2C8F /* Stack.swift */; };
+		9C69020C2BCF399C000B2C8F /* SFSymbolsPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 9C69020B2BCF399C000B2C8F /* SFSymbolsPicker */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C6349562BD2656500CC34CF /* ContentVIew-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentVIew-ViewModel.swift"; sourceTree = "<group>"; };
 		9C6901F52BCEEED0000B2C8F /* FlagGeneration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlagGeneration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C6901F82BCEEED0000B2C8F /* FlagGenerationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagGenerationApp.swift; sourceTree = "<group>"; };
 		9C6901FA2BCEEED0000B2C8F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -30,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C69020C2BCF399C000B2C8F /* SFSymbolsPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +61,7 @@
 			children = (
 				9C6901F82BCEEED0000B2C8F /* FlagGenerationApp.swift */,
 				9C6901FA2BCEEED0000B2C8F /* ContentView.swift */,
+				9C6349562BD2656500CC34CF /* ContentVIew-ViewModel.swift */,
 				9C6902062BCEEF04000B2C8F /* StackView.swift */,
 				9C6902082BCEEF0A000B2C8F /* Stack.swift */,
 				9C6901FC2BCEEED1000B2C8F /* Assets.xcassets */,
@@ -89,6 +94,9 @@
 			dependencies = (
 			);
 			name = FlagGeneration;
+			packageProductDependencies = (
+				9C69020B2BCF399C000B2C8F /* SFSymbolsPicker */,
+			);
 			productName = FlagGeneration;
 			productReference = 9C6901F52BCEEED0000B2C8F /* FlagGeneration.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 9C6901EC2BCEEED0000B2C8F;
+			packageReferences = (
+				9C69020A2BCF399C000B2C8F /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */,
+			);
 			productRefGroup = 9C6901F62BCEEED0000B2C8F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -143,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C6349572BD2656500CC34CF /* ContentVIew-ViewModel.swift in Sources */,
 				9C6902092BCEEF0A000B2C8F /* Stack.swift in Sources */,
 				9C6901FB2BCEEED0000B2C8F /* ContentView.swift in Sources */,
 				9C6901F92BCEEED0000B2C8F /* FlagGenerationApp.swift in Sources */,
@@ -282,6 +294,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FlagGeneration/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "add photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -310,6 +323,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FlagGeneration/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "add photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -350,6 +364,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9C69020A2BCF399C000B2C8F /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alessiorubicini/SFSymbolsPicker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9C69020B2BCF399C000B2C8F /* SFSymbolsPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9C69020A2BCF399C000B2C8F /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */;
+			productName = SFSymbolsPicker;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9C6901ED2BCEEED0000B2C8F /* Project object */;
 }
